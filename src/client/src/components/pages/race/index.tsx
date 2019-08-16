@@ -24,29 +24,49 @@ type RacePresenterProps = {
   race: Race;
 };
 
+const thinProps = {
+  flexBasis: 48,
+  flexGrow: 0,
+  flexShrink: 0
+};
+
+const convertSexCode = (code: string) => {
+  if (code === "1") return "牡";
+  if (code === "2") return "牝";
+  return "";
+};
+
 const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
   <Pane padding={16}>
-    <Pane background="tint2">
+    <Pane padding={16} background="tint2">
       <Heading size={700}>{race.hondai}</Heading>
       <Paragraph>{`${race.distance}m`}</Paragraph>
     </Pane>
     <Pane background="white" marginTop={24}>
-      <Table>
+      <Table width={480}>
         <Table.Head>
-          <Table.TextHeaderCell flexBasis={48} flexGrow={0}>枠</Table.TextHeaderCell>
-          <Table.TextHeaderCell>番</Table.TextHeaderCell>
+          <Table.TextHeaderCell {...thinProps}>枠</Table.TextHeaderCell>
+          <Table.TextHeaderCell {...thinProps}>番</Table.TextHeaderCell>
           <Table.TextHeaderCell>馬名</Table.TextHeaderCell>
-          <Table.TextHeaderCell>性</Table.TextHeaderCell>
-          <Table.TextHeaderCell>齢</Table.TextHeaderCell>
+          <Table.TextHeaderCell {...thinProps}>性</Table.TextHeaderCell>
+          <Table.TextHeaderCell {...thinProps}>齢</Table.TextHeaderCell>
         </Table.Head>
         <Table.Body height={240}>
           {(race.umaRaces || []).map(umaRace => (
             <Table.Row key={umaRace.id}>
-              <Table.TextCell flexBasis={48} flexGrow={0} isNumber background="black">{umaRace.wakuban}</Table.TextCell>
-              <Table.TextCell isNumber>{umaRace.umaban}</Table.TextCell>
+              <Table.TextCell {...thinProps} isNumber>
+                {umaRace.wakuban}
+              </Table.TextCell>
+              <Table.TextCell {...thinProps} isNumber>
+                {umaRace.umaban}
+              </Table.TextCell>
               <Table.TextCell>{umaRace.name}</Table.TextCell>
-              <Table.TextCell>{umaRace.sexCode}</Table.TextCell>
-              <Table.TextCell isNumber>{umaRace.age}</Table.TextCell>
+              <Table.TextCell {...thinProps}>
+                {convertSexCode(umaRace.sexCode)}
+              </Table.TextCell>
+              <Table.TextCell {...thinProps} isNumber>
+                {umaRace.age}
+              </Table.TextCell>
             </Table.Row>
           ))}
         </Table.Body>
