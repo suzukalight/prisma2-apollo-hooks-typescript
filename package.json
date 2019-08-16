@@ -11,7 +11,9 @@
     ],
     "nohoist": [
       "**/react-scripts",
-      "**/react-scripts/**"
+      "**/react-scripts/**",
+      "**/@generated",
+      "**/@generated/**"
     ]
   }
 }
