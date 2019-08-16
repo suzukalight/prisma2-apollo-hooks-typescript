@@ -1,0 +1,72 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.db"
+  default  = true
+}
+
+generator photon {
+  provider = "photonjs"
+}
+
+generator nexus_prisma {
+  provider = "nexus-prisma"
+}
+
+model User {
+  id    String  @default(cuid()) @id @unique
+  email String  @unique
+  name  String?
+  posts Post[]
+}
+
+model Post {
+  id        String   @default(cuid()) @id @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+  published Boolean
+  title     String
+  content   String?
+  author    User?
+}
+
+model Race {
+  id            Int @id
+  raceId        String @unique
+  createdAt     DateTime
+  raceDate      DateTime
+  courseCode    String
+  kai           Int
+  nichi         Int
+  number        Int
+  hondai        String
+  gradeCode     String
+  joukenCodeJy  String
+  distance      Int
+  trackCode     String
+  hassouTime    DateTime
+  tourokuTousuu Int
+  shussouTousuu Int
+
+  umaRaces      UmaRace[]
+}
+
+model UmaRace {
+  id            Int @id
+  umaRaceId     String @unique
+  race          Race
+  createdAt     DateTime
+  raceDate      DateTime
+  wakuban       Int
+  umaban        Int
+  name          String
+  sexCode       String
+  keiroCode     String
+  age           Int
+  tozaiCode     String
+  choukyoushiRyakushou  String
+  futanJuuryou  Int
+  kishuRyakushou  String
+  odds          Int
+  ninki         Int
+}
