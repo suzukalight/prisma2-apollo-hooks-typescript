@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import format from 'date-fns/format';
 const { Pane, Heading, Paragraph, Table } = require("evergreen-ui");
 
 interface UmaRace {
@@ -39,6 +40,7 @@ const convertSexCode = (code: string) => {
 const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
   <Pane padding={16}>
     <Pane padding={16} background="tint2">
+      <Paragraph>{format(race.raceDate, 'YYYY年M月D日')}</Paragraph>
       <Heading size={700}>{race.hondai}</Heading>
       <Paragraph>{`${race.distance}m`}</Paragraph>
     </Pane>
