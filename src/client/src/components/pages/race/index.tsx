@@ -1,8 +1,8 @@
-import React from "react";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import format from 'date-fns/format';
-const { Pane, Heading, Paragraph, Table } = require("evergreen-ui");
+const { Pane, Heading, Paragraph, Table } = require('evergreen-ui');
 
 interface UmaRace {
   age: number; // Int!
@@ -28,14 +28,17 @@ type RacePresenterProps = {
 const thinProps = {
   flexBasis: 48,
   flexGrow: 0,
-  flexShrink: 0
+  flexShrink: 0,
 };
 
 const convertSexCode = (code: string) => {
-  if (code === "1") return "牡";
-  if (code === "2") return "牝";
-  return "";
+  if (code === '1') return '牡';
+  if (code === '2') return '牝';
+  return '';
 };
+
+
+
 
 const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
   <Pane padding={16}>
@@ -63,9 +66,7 @@ const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
                 {umaRace.umaban}
               </Table.TextCell>
               <Table.TextCell>{umaRace.name}</Table.TextCell>
-              <Table.TextCell {...thinProps}>
-                {convertSexCode(umaRace.sexCode)}
-              </Table.TextCell>
+              <Table.TextCell {...thinProps}>{convertSexCode(umaRace.sexCode)}</Table.TextCell>
               <Table.TextCell {...thinProps} isNumber>
                 {umaRace.age}
               </Table.TextCell>
@@ -112,10 +113,10 @@ const GET_RACE = gql`
 
 const RacePage: React.FC<RacePageProps> = ({ id }) => {
   const { loading, data } = useQuery<RaceData, RaceVars>(GET_RACE, {
-    variables: { where: { id } }
+    variables: { where: { id } },
   });
 
-  console.log("loading, data: ", loading, data);
+  console.log('loading, data: ', loading, data);
   if (loading) return null;
   if (!data) return null;
 

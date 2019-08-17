@@ -28,10 +28,12 @@
   },
   "lint-staged": {
     "./src/client/src/**/*.{js,jsx}": [
+      "prettier",
       "eslint --fix",
       "git add"
     ],
     "./src/server/src/**/*.{js,jsx}": [
+      "prettier",
       "eslint --fix",
       "git add"
     ]
