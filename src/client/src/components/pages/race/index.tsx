@@ -27,18 +27,15 @@ type RacePresenterProps = {
 
 const thinProps = {
   flexBasis: 48,
-  flexGrow: 0,
+  flexGrow: 0
   flexShrink: 0,
 };
 
 const convertSexCode = (code: string) => {
   if (code === '1') return '牡';
   if (code === '2') return '牝';
-  return '';
+  return "";
 };
-
-
-
 
 const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
   <Pane padding={16}>
