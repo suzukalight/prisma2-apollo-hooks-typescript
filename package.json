@@ -15,5 +15,25 @@
       "**/@generated",
       "**/@generated/**"
     ]
+  },
+  "devDependencies": {
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/client/src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "./src/server/src/**/*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
