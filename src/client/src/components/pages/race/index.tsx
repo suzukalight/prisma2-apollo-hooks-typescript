@@ -27,7 +27,7 @@ type RacePresenterProps = {
 
 const thinProps = {
   flexBasis: 48,
-  flexGrow: 0
+  flexGrow: 0  ,
   flexShrink: 0,
 };
 
