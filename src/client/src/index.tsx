@@ -1,25 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { createHttpLink } from "apollo-link-http";
-import ApolloClient from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { ApolloProvider } from "@apollo/react-hooks";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createHttpLink } from 'apollo-link-http';
+import ApolloClient from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloProvider } from '@apollo/react-hooks';
 
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-import "./index.css";
+import './index.css';
 
 const client = new ApolloClient({
-  link: createHttpLink({ uri: "http://localhost:4000" }),
-  cache: new InMemoryCache()
+  link: createHttpLink({ uri: 'http://localhost:4000' }),
+  cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

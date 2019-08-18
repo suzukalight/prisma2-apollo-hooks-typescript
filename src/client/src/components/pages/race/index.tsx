@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import format from 'date-fns/format';
+
 const { Pane, Heading, Paragraph, Table } = require('evergreen-ui');
 
 interface UmaRace {
@@ -21,20 +22,20 @@ interface Race {
   umaRaces: [UmaRace]; // [UmaRace!]
 }
 
-type RacePresenterProps = {
+interface RacePresenterProps {
   race: Race;
-};
+}
 
 const thinProps = {
   flexBasis: 48,
-  flexGrow: 0  ,
+  flexGrow: 0,
   flexShrink: 0,
 };
 
 const convertSexCode = (code: string) => {
   if (code === '1') return '牡';
   if (code === '2') return '牝';
-  return "";
+  return '';
 };
 
 const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
@@ -85,9 +86,9 @@ interface RaceVars {
   };
 }
 
-type RacePageProps = {
+interface RacePageProps {
   id: number;
-};
+}
 
 const GET_RACE = gql`
   query getRace($where: RaceWhereUniqueInput!) {

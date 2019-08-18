@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RacePage from "./components/pages/race"
+import RacePage from './components/pages/race';
 
 const App: React.FC = () => {
   return (
@@ -11,14 +11,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
