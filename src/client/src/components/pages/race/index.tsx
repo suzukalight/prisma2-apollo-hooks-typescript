@@ -110,12 +110,13 @@ const GET_RACE = gql`
 `;
 
 const RacePage: React.FC<RacePageProps> = ({ id }) => {
-  const { loading, data } = useQuery<RaceData, RaceVars>(GET_RACE, {
+  const { loading, error, data } = useQuery<RaceData, RaceVars>(GET_RACE, {
     variables: { where: { id } },
   });
 
-  console.log('loading, data: ', loading, data);
-  if (loading) return null;
+  console.log('loading, error, data: ', loading, error, data);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error</div>;
   if (!data) return null;
 
   return <RacePresenter race={data.race} />;
