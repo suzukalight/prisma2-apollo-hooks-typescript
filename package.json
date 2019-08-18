@@ -34,7 +34,7 @@
   "scripts": {
     "lint": "yarn cl:lint && yarn sr:lint",
     "cl:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./src/client/src",
-    "sr:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./src/client/src"
+    "sr:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./src/server/src"
   },
   "husky": {
     "hooks": {
