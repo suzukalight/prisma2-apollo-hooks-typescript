@@ -28,12 +28,6 @@ interface RacePresenterProps {
   race: Race;
 }
 
-const convertSexCode = (code: string) => {
-  if (code === '1') return '牡';
-  if (code === '2') return '牝';
-  return '';
-};
-
 const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
   <div className={styles.root}>
     <div className="head">
