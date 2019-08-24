@@ -1,6 +1,18 @@
+
+export interface JvUmaRace {
+  id: number;
+  age: number;
+  name: string;
+  sexCode: string;
+  wakuban: number;
+  umaban: number;
+}
+
 export interface JvRace {
   id: number;
+  raceDate?: any;
   number: number;
+  hondai?: string;
   ryakushou6: string;
   gradeCode: string;
   joukenCodeJy: string;
@@ -8,6 +20,7 @@ export interface JvRace {
   distance: number;
   tourokuTousuu: number;
   hassouTime: Date;
+  umaRaces?: JvUmaRace[];
 }
 
 export interface JvYschGradeRace {

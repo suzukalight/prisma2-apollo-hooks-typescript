@@ -1,70 +1,13 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import format from 'date-fns/format';
 
-import sexCode from '../../../constants/codes/sex';
+import Race from '../../organisms/Race';
 
-import styles from './index.module.scss';
-
-interface UmaRace {
-  age: number;
-  id: number;
-  name: string;
-  sexCode: string;
-  umaban: number;
-  wakuban: number;
-}
-
-interface Race {
-  distance: number;
-  hondai: string;
-  id: number;
-  raceDate: any;
-  umaRaces: UmaRace[];
-}
-
-interface RacePresenterProps {
-  race: Race;
-}
-
-const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
-  <div className={styles.root}>
-    <div className="head">
-      <p className={styles.noMargin}>{format(race.raceDate, 'YYYY年M月D日')}</p>
-      <h1 className={styles.noMargin}>{race.hondai}</h1>
-      <p>{`${race.distance}m`}</p>
-    </div>
-    <hr />
-    <div className="body">
-      <table className="bp3-html-table bp3-html-table-condensed">
-        <thead>
-          <tr>
-            <th>枠</th>
-            <th>番</th>
-            <th>馬名</th>
-            <th>性</th>
-            <th>齢</th>
-          </tr>
-        </thead>
-        <tbody>
-          {(race.umaRaces || []).map(umaRace => (
-            <tr key={umaRace.id}>
-              <td>{umaRace.wakuban}</td>
-              <td>{umaRace.umaban}</td>
-              <td>{umaRace.name}</td>
-              <td>{sexCode[umaRace.sexCode].ryaku1}</td>
-              <td>{umaRace.age}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
-);
+import { JvRace } from '../../../types/jra-van';
 
 interface RaceData {
-  race: Race;
+  race: JvRace;
 }
 
 interface RaceVars {
@@ -105,7 +48,7 @@ const RacePage: React.FC<RacePageProps> = ({ id }) => {
   if (error) return <div>Error</div>;
   if (!data) return null;
 
-  return <RacePresenter race={data.race} />;
+  return <Race race={data.race} />;
 };
 
 export default RacePage;
