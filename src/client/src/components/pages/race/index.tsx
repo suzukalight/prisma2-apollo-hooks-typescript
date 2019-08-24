@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import format from 'date-fns/format';
 
-const { Pane, Heading, Paragraph, Table } = require('evergreen-ui');
+import styles from './index.module.scss';
 
 interface UmaRace {
   age: number; // Int!
@@ -19,18 +19,12 @@ interface Race {
   hondai: string; // String!
   id: number; // Int!
   raceDate: any; // DateTime!
-  umaRaces: [UmaRace]; // [UmaRace!]
+  umaRaces: UmaRace[]; // [UmaRace!]
 }
 
 interface RacePresenterProps {
   race: Race;
 }
-
-const thinProps = {
-  flexBasis: 48,
-  flexGrow: 0,
-  flexShrink: 0,
-};
 
 const convertSexCode = (code: string) => {
   if (code === '1') return '牡';
@@ -39,41 +33,38 @@ const convertSexCode = (code: string) => {
 };
 
 const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
-  <Pane padding={16}>
-    <Pane padding={16} background="tint2">
-      <Paragraph>{format(race.raceDate, 'YYYY年M月D日')}</Paragraph>
-      <Heading size={700}>{race.hondai}</Heading>
-      <Paragraph>{`${race.distance}m`}</Paragraph>
-    </Pane>
-    <Pane background="white" marginTop={24}>
-      <Table width={480}>
-        <Table.Head>
-          <Table.TextHeaderCell {...thinProps}>枠</Table.TextHeaderCell>
-          <Table.TextHeaderCell {...thinProps}>番</Table.TextHeaderCell>
-          <Table.TextHeaderCell>馬名</Table.TextHeaderCell>
-          <Table.TextHeaderCell {...thinProps}>性</Table.TextHeaderCell>
-          <Table.TextHeaderCell {...thinProps}>齢</Table.TextHeaderCell>
-        </Table.Head>
-        <Table.Body height={240}>
+  <div className={styles.root}>
+    <div className="head">
+      <p className={styles.noMargin}>{format(race.raceDate, 'YYYY年M月D日')}</p>
+      <h1 className={styles.noMargin}>{race.hondai}</h1>
+      <p>{`${race.distance}m`}</p>
+    </div>
+    <hr />
+    <div className="body">
+      <table className="bp3-html-table bp3-html-table-condensed">
+        <thead>
+          <tr>
+            <th>枠</th>
+            <th>番</th>
+            <th>馬名</th>
+            <th>性</th>
+            <th>齢</th>
+          </tr>
+        </thead>
+        <tbody>
           {(race.umaRaces || []).map(umaRace => (
-            <Table.Row key={umaRace.id}>
-              <Table.TextCell {...thinProps} isNumber>
-                {umaRace.wakuban}
-              </Table.TextCell>
-              <Table.TextCell {...thinProps} isNumber>
-                {umaRace.umaban}
-              </Table.TextCell>
-              <Table.TextCell>{umaRace.name}</Table.TextCell>
-              <Table.TextCell {...thinProps}>{convertSexCode(umaRace.sexCode)}</Table.TextCell>
-              <Table.TextCell {...thinProps} isNumber>
-                {umaRace.age}
-              </Table.TextCell>
-            </Table.Row>
+            <tr key={umaRace.id}>
+              <td>{umaRace.wakuban}</td>
+              <td>{umaRace.umaban}</td>
+              <td>{umaRace.name}</td>
+              <td>{convertSexCode(umaRace.sexCode)}</td>
+              <td>{umaRace.age}</td>
+            </tr>
           ))}
-        </Table.Body>
-      </Table>
-    </Pane>
-  </Pane>
+        </tbody>
+      </table>
+    </div>
+  </div>
 );
 
 interface RaceData {
@@ -114,7 +105,6 @@ const RacePage: React.FC<RacePageProps> = ({ id }) => {
     variables: { where: { id } },
   });
 
-  console.log('loading, error, data: ', loading, error, data);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error</div>;
   if (!data) return null;
