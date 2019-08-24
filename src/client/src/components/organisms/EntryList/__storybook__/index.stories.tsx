@@ -7,7 +7,7 @@ import '@blueprintjs/table/lib/css/table.css';
 
 import { JvRace } from '../../../../types/jra-van';
 
-import { RacePresenter } from '..';
+import { EntryListPresenter } from '..';
 
 const race: JvRace = {
   id: 9,
@@ -89,4 +89,4 @@ const race: JvRace = {
   ],
 };
 
-storiesOf('organisms/Race', module).add('correct', () => <RacePresenter race={race} />);
+storiesOf('organisms/EntryList', module).add('correct', () => <EntryListPresenter race={race} />);

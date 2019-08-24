@@ -5,7 +5,7 @@ import 'normalize.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
 
-import { RaceListPresenter } from '..';
+import { RacingProgramPresenter } from '..';
 
 const races = [
   {
@@ -76,6 +76,6 @@ const races = [
   },
 ];
 
-storiesOf('organisms/RaceListSmall', module).add('correct', () => (
-  <RaceListPresenter races={races} />
+storiesOf('organisms/RacingProgram', module).add('correct', () => (
+  <RacingProgramPresenter races={races} />
 ));

@@ -2,24 +2,25 @@ import React from 'react';
 import format from 'date-fns/format';
 
 import { JvRace } from '../../../types/jra-van';
+import trackCode from '../../../constants/codes/track';
 import sexCode from '../../../constants/codes/sex';
 
 import styles from './index.module.scss';
 
-interface RacePresenterProps {
+interface EntryListPresenterProps {
   race: JvRace;
 }
 
-export const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
+export const EntryListPresenter: React.FC<EntryListPresenterProps> = ({ race }) => (
   <div className={styles.root}>
     <div className="head">
       <p className={styles.noMargin}>{format(race.raceDate, 'YYYY年M月D日')}</p>
       <h1 className={styles.noMargin}>{race.hondai}</h1>
-      <p>{`${race.distance}m`}</p>
+      <p>{`${trackCode[race.trackCode].course}${race.distance}m`}</p>
     </div>
     <hr />
     <div className="body">
-      <table className="bp3-html-table bp3-html-table-condensed">
+      <table className="bp3-html-table bp3-html-table-condensed bp3-html-table-striped bp3-interactive">
         <thead>
           <tr>
             <th>枠</th>
@@ -45,4 +46,4 @@ export const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
   </div>
 );
 
-export default RacePresenter;
+export default EntryListPresenter;

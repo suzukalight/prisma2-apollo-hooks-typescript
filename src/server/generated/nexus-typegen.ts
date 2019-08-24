@@ -102,6 +102,7 @@ export interface NexusGenFieldTypes {
     hondai: string; // String!
     id: number; // Int!
     raceDate: any; // DateTime!
+    trackCode: string; // String!
     umaRaces: NexusGenRootTypes['UmaRace'][] | null; // [UmaRace!]
   }
   UmaRace: { // field return type

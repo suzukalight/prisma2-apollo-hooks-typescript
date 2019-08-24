@@ -12,7 +12,7 @@ import { RacingFixtures } from '..';
 const yschs: JvYsch[] = [
   {
     id: 1,
-    raceDate: new Date(2019, 0, 5),
+    raceDate: new Date(1999, 0, 5),
     courseCode: '06',
     kai: 1,
     nichi: 1,
@@ -28,7 +28,7 @@ const yschs: JvYsch[] = [
   },
   {
     id: 2,
-    raceDate: new Date(2019, 0, 5),
+    raceDate: new Date(1999, 0, 5),
     courseCode: '08',
     kai: 1,
     nichi: 1,
@@ -44,18 +44,18 @@ const yschs: JvYsch[] = [
   },
   {
     id: 3,
-    raceDate: new Date(2019, 0, 6),
+    raceDate: new Date(1999, 0, 6),
     courseCode: '06',
     kai: 1,
-    nichi: 1,
+    nichi: 2,
     number: 2,
   },
   {
     id: 4,
-    raceDate: new Date(2019, 0, 6),
+    raceDate: new Date(1999, 0, 6),
     courseCode: '08',
     kai: 1,
-    nichi: 1,
+    nichi: 2,
     number: 2,
     gradeRaces: [
       {
@@ -68,18 +68,18 @@ const yschs: JvYsch[] = [
   },
   {
     id: 5,
-    raceDate: new Date(2019, 0, 26),
+    raceDate: new Date(1999, 0, 26),
     courseCode: '05',
     kai: 1,
-    nichi: 1,
+    nichi: 2,
     number: 2,
   },
   {
     id: 6,
-    raceDate: new Date(2019, 0, 26),
+    raceDate: new Date(1999, 0, 26),
     courseCode: '07',
     kai: 1,
-    nichi: 1,
+    nichi: 2,
     number: 2,
     gradeRaces: [
       {
@@ -92,11 +92,35 @@ const yschs: JvYsch[] = [
   },
   {
     id: 6,
-    raceDate: new Date(2019, 0, 26),
+    raceDate: new Date(1999, 0, 26),
     courseCode: '08',
     kai: 1,
-    nichi: 1,
+    nichi: 2,
     number: 2,
+  },
+  {
+    id: 98,
+    raceDate: new Date(1999, 11, 26),
+    courseCode: '06',
+    kai: 5,
+    nichi: 8,
+    number: 1,
+    gradeRaces: [
+      {
+        hondai: '',
+        ryakushou6: '有馬記',
+        gradeCode: 'A',
+        shubetsuCode: '',
+      },
+    ],
+  },
+  {
+    id: 99,
+    raceDate: new Date(1999, 11, 26),
+    courseCode: '09',
+    kai: 5,
+    nichi: 8,
+    number: 1,
   },
 ];
 

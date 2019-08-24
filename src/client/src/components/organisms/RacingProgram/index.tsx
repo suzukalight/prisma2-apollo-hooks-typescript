@@ -16,11 +16,11 @@ interface Race {
   hassouTime: Date;
 }
 
-interface RaceItemProps {
+interface RacingProgramItemProps {
   race: Race;
 }
 
-export const RaceItem: React.FC<RaceItemProps> = ({ race }) => (
+export const RacingProgramItem: React.FC<RacingProgramItemProps> = ({ race }) => (
   <tr>
     <td>{race.number}</td>
     <td>{race.ryakushou6}</td>
@@ -31,11 +31,11 @@ export const RaceItem: React.FC<RaceItemProps> = ({ race }) => (
   </tr>
 );
 
-interface RaceListPresenterProps {
+interface RacingProgramPresenterProps {
   races: Race[];
 }
 
-export const RaceListPresenter: React.FC<RaceListPresenterProps> = ({ races }) => (
+export const RacingProgramPresenter: React.FC<RacingProgramPresenterProps> = ({ races }) => (
   <table className="bp3-html-table bp3-html-table-condensed bp3-html-table-striped bp3-interactive">
     <thead>
       <tr>
@@ -49,7 +49,7 @@ export const RaceListPresenter: React.FC<RaceListPresenterProps> = ({ races }) =
     </thead>
     <tbody>
       {races.map(race => (
-        <RaceItem key={race.id} race={race} />
+        <RacingProgramItem key={race.id} race={race} />
       ))}
     </tbody>
   </table>

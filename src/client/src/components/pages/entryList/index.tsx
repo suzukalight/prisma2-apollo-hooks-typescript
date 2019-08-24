@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import Race from '../../organisms/Race';
+import EntryList from '../../organisms/EntryList';
 
 import { JvRace } from '../../../types/jra-van';
 
@@ -16,15 +16,12 @@ interface RaceVars {
   };
 }
 
-interface RacePageProps {
-  id: number;
-}
-
 const GET_RACE = gql`
   query getRace($where: RaceWhereUniqueInput!) {
     race(where: $where) {
       id
       raceDate
+      trackCode
       distance
       hondai
       umaRaces {
@@ -39,7 +36,11 @@ const GET_RACE = gql`
   }
 `;
 
-const RacePage: React.FC<RacePageProps> = ({ id }) => {
+interface EntryListPageProps {
+  id: number;
+}
+
+const EntryListPage: React.FC<EntryListPageProps> = ({ id }) => {
   const { loading, error, data } = useQuery<RaceData, RaceVars>(GET_RACE, {
     variables: { where: { id } },
   });
@@ -48,7 +49,7 @@ const RacePage: React.FC<RacePageProps> = ({ id }) => {
   if (error) return <div>Error</div>;
   if (!data) return null;
 
-  return <Race race={data.race} />;
+  return <EntryList race={data.race} />;
 };
 
-export default RacePage;
+export default EntryListPage;

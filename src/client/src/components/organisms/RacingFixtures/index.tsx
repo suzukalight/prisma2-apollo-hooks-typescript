@@ -24,10 +24,10 @@ export const RacingFixturesItemPresenter: React.FC<RacingFixturesItemPresenterPr
     <td>{dateString}</td>
     <td>
       {kaisais
-        .map(kaisai => `${kaisai.kai}${courseCode[kaisai.courseCode].ryaku1}${kaisai.number}`)
+        .map(kaisai => `${kaisai.kai}${courseCode[kaisai.courseCode].ryaku1}${kaisai.nichi}`)
         .join(', ')}
     </td>
-    <td>{mainRace && `${mainRace.ryakushou6}${gradeOrJouken(mainRace)}`}</td>
+    <td>{mainRace && `${mainRace.ryakushou6} (${gradeOrJouken(mainRace)})`}</td>
   </tr>
 );
 

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import RacePage from './components/pages/race';
+import EntryListPage from './components/pages/entryList';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <RacePage id={1} />
+      <EntryListPage id={1} />
     </div>
   );
 };

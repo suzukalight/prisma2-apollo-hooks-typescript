@@ -43,6 +43,7 @@ export const Race = objectType({
     t.model.id();
     t.model.raceDate();
     t.model.hondai();
+    t.model.trackCode();
     t.model.distance();
     t.model.umaRaces({
       pagination: false,

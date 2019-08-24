@@ -55,6 +55,7 @@ type Race {
   hondai: String!
   id: Int!
   raceDate: DateTime!
+  trackCode: String!
   umaRaces(after: String, before: String, first: Int, last: Int, skip: Int): [UmaRace!]
 }
 
