@@ -36,7 +36,8 @@
     "cl:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./src/client/src",
     "cl:start": "yarn workspace client start",
     "sr:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./src/server/src",
-    "sr:start": "yarn workspace server start"
+    "sr:start": "yarn workspace server start",
+    "storybook": "yarn workspace client start-storybook"
   },
   "husky": {
     "hooks": {
