@@ -2,17 +2,16 @@ import React from 'react';
 import format from 'date-fns/format';
 
 import trackCode from '../../../constants/codes/track';
-import gradeCode from '../../../constants/codes/grade';
-import joukenCode from '../../../constants/codes/jouken';
+import { gradeOrJouken } from '../../../utils/code';
 
 interface Race {
-  id: number; // Int!
-  number: number; // Int!
-  ryakushou6: string; // String!
+  id: number;
+  number: number;
+  ryakushou6: string;
   gradeCode: string;
   joukenCodeJy: string;
   trackCode: string;
-  distance: number; // Int!
+  distance: number;
   tourokuTousuu: number;
   hassouTime: Date;
 }
@@ -25,7 +24,7 @@ export const RaceItem: React.FC<RaceItemProps> = ({ race }) => (
   <tr>
     <td>{race.number}</td>
     <td>{race.ryakushou6}</td>
-    <td>{gradeCode[race.gradeCode].ryaku || joukenCode[race.joukenCodeJy].ryaku}</td>
+    <td>{gradeOrJouken(race)}</td>
     <td>{`${trackCode[race.trackCode].course}${race.distance}`}</td>
     <td>{race.tourokuTousuu}</td>
     <td>{`${format(race.hassouTime, 'HH:mm')}`}</td>

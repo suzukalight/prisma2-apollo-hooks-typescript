@@ -3,23 +3,25 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import format from 'date-fns/format';
 
+import sexCode from '../../../constants/codes/sex';
+
 import styles from './index.module.scss';
 
 interface UmaRace {
-  age: number; // Int!
-  id: number; // Int!
-  name: string; // String!
-  sexCode: string; // String!
-  umaban: number; // Int!
-  wakuban: number; // Int!
+  age: number;
+  id: number;
+  name: string;
+  sexCode: string;
+  umaban: number;
+  wakuban: number;
 }
 
 interface Race {
-  distance: number; // Int!
-  hondai: string; // String!
-  id: number; // Int!
-  raceDate: any; // DateTime!
-  umaRaces: UmaRace[]; // [UmaRace!]
+  distance: number;
+  hondai: string;
+  id: number;
+  raceDate: any;
+  umaRaces: UmaRace[];
 }
 
 interface RacePresenterProps {
@@ -57,7 +59,7 @@ const RacePresenter: React.FC<RacePresenterProps> = ({ race }) => (
               <td>{umaRace.wakuban}</td>
               <td>{umaRace.umaban}</td>
               <td>{umaRace.name}</td>
-              <td>{convertSexCode(umaRace.sexCode)}</td>
+              <td>{sexCode[umaRace.sexCode].ryaku1}</td>
               <td>{umaRace.age}</td>
             </tr>
           ))}

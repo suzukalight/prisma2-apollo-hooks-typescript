@@ -1,11 +1,11 @@
-export const convSex = (code: string) => {
-  if (code === '1') return '牡';
-  if (code === '2') return '牝';
-  return '';
-};
+import { JvRaceOrYschGradeRace } from '../types/jra-van';
 
-export const convCourse = (code: string) => {
-  if (code === '1') return '牡';
-  if (code === '2') return '牝';
+import gradeCode from '../constants/codes/grade';
+import joukenCode from '../constants/codes/jouken';
+
+export const gradeOrJouken = (race: JvRaceOrYschGradeRace) => {
+  if (race.gradeCode && gradeCode[race.gradeCode].ryaku) return gradeCode[race.gradeCode].ryaku;
+  if ('joukenCodeJy' in race && joukenCode[race.joukenCodeJy].ryaku)
+    return joukenCode[race.joukenCodeJy].ryaku;
   return '';
 };
