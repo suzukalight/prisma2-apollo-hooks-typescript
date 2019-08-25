@@ -3,8 +3,10 @@ import format from 'date-fns/format';
 import ja from 'date-fns/locale/ja';
 
 import { JvYsch, JvYschGradeRace, JvRace } from '../../../types/jra-van';
+
+import RaceName from '../../atoms/RaceName';
+
 import courseCode from '../../../constants/codes/course';
-import { gradeOrJouken } from '../../../utils/code';
 import { comparatorGradeAndJouken } from '../../../utils/comparators';
 
 interface RacingFixturesItemPresenterProps {
@@ -27,7 +29,7 @@ export const RacingFixturesItemPresenter: React.FC<RacingFixturesItemPresenterPr
         .map(kaisai => `${kaisai.kai}${courseCode[kaisai.courseCode].ryaku1}${kaisai.nichi}`)
         .join(', ')}
     </td>
-    <td>{mainRace && `${mainRace.ryakushou6} (${gradeOrJouken(mainRace)})`}</td>
+    <td>{mainRace && <RaceName race={mainRace} />}</td>
   </tr>
 );
 

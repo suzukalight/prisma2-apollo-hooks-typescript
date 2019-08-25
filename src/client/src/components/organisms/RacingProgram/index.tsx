@@ -1,56 +1,62 @@
 import React from 'react';
 import format from 'date-fns/format';
 
+import { JvRace } from '../../../types/jra-van';
+
+import RaceName from '../../atoms/RaceName';
+
 import trackCode from '../../../constants/codes/track';
-import { gradeOrJouken } from '../../../utils/code';
+import courseCode from '../../../constants/codes/course';
 
-interface Race {
-  id: number;
-  number: number;
-  ryakushou6: string;
-  gradeCode: string;
-  joukenCodeJy: string;
-  trackCode: string;
-  distance: number;
-  tourokuTousuu: number;
-  hassouTime: Date;
-}
-
-interface RacingProgramItemProps {
-  race: Race;
-}
-
-export const RacingProgramItem: React.FC<RacingProgramItemProps> = ({ race }) => (
-  <tr>
-    <td>{race.number}</td>
-    <td>{race.ryakushou6}</td>
-    <td>{gradeOrJouken(race)}</td>
-    <td>{`${trackCode[race.trackCode].course}${race.distance}`}</td>
-    <td>{race.tourokuTousuu}</td>
-    <td>{`${format(race.hassouTime, 'HH:mm')}`}</td>
-  </tr>
-);
+import styles from './index.module.scss';
 
 interface RacingProgramPresenterProps {
-  races: Race[];
+  races: JvRace[];
 }
 
 export const RacingProgramPresenter: React.FC<RacingProgramPresenterProps> = ({ races }) => (
-  <table className="bp3-html-table bp3-html-table-condensed bp3-html-table-striped bp3-interactive">
-    <thead>
-      <tr>
-        <th>R</th>
-        <th>レース</th>
-        <th>クラス</th>
-        <th>コース</th>
-        <th>頭</th>
-        <th>発走</th>
-      </tr>
-    </thead>
-    <tbody>
-      {races.map(race => (
-        <RacingProgramItem key={race.id} race={race} />
-      ))}
-    </tbody>
-  </table>
+  <div className={styles.root}>
+    <div>
+      <h3>{`${races[0].kai}回${courseCode[races[0].courseCode || ''].ryaku2}${races[0].nichi}日`}</h3>
+    </div>
+    <table className="bp3-html-table bp3-html-table-condensed bp3-html-table-striped bp3-interactive">
+      <thead>
+        <tr>
+          <th>R</th>
+          <th>レース</th>
+          <th>コース</th>
+          <th>発走</th>
+        </tr>
+      </thead>
+      <tbody>
+        {races.map(race => (
+          <tr>
+            <td>{race.number}</td>
+            <td>
+              <RaceName race={race} />
+            </td>
+            <td>{`${trackCode[race.trackCode].course}${race.distance}`}</td>
+            <td>{`${format(race.hassouTime, 'HH:mm')}`}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 );
+
+interface RacingProgramAdapterProps {
+  presenter?: React.FC<RacingProgramPresenterProps>;
+  races: JvRace[];
+}
+
+export const RacingProgramAdapter: React.FC<RacingProgramAdapterProps> = ({
+  presenter = RacingProgramPresenter,
+  races,
+}) => {
+  if (!races || !races.length) return null;
+
+  const racesSorted = (races || []).slice().sort((a, b) => a.number - b.number);
+  return presenter({ races: racesSorted });
+};
+
+export default RacingProgramAdapter;

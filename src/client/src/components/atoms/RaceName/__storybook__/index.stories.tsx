@@ -5,7 +5,7 @@ import 'normalize.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/table/lib/css/table.css';
 
-import { RacingProgramAdapter } from '..';
+import RaceName from '..';
 
 const racesKaisai = {
   raceDate: new Date(1999, 11, 26),
@@ -15,18 +15,6 @@ const racesKaisai = {
 };
 
 const races = [
-  {
-    id: 9,
-    ...racesKaisai,
-    number: 9,
-    ryakushou6: '有馬記',
-    joukenCodeJy: '999',
-    gradeCode: 'A',
-    trackCode: '20',
-    distance: 2500,
-    tourokuTousuu: 15,
-    hassouTime: new Date(1999, 11, 26, 15, 20, 0),
-  },
   {
     id: 1,
     ...racesKaisai,
@@ -86,6 +74,18 @@ const races = [
     distance: 1800,
     tourokuTousuu: 11,
     hassouTime: new Date(1999, 11, 26, 14, 30, 0),
+  },
+  {
+    id: 9,
+    ...racesKaisai,
+    number: 9,
+    ryakushou6: '有馬記',
+    joukenCodeJy: '999',
+    gradeCode: 'A',
+    trackCode: '20',
+    distance: 2500,
+    tourokuTousuu: 15,
+    hassouTime: new Date(1999, 11, 26, 15, 20, 0),
   },
   {
     id: 10,
@@ -171,6 +171,18 @@ const races20190623 = [
   },
 ];
 
-storiesOf('organisms/RacingProgram', module)
-  .add('1999-12-26', () => <RacingProgramAdapter races={races} />)
-  .add('2019-06-23', () => <RacingProgramAdapter races={races20190623} />);
+storiesOf('atoms/RaceName', module)
+  .add('1999-12-26', () =>
+    races.map(race => (
+      <div>
+        <RaceName race={race} />
+      </div>
+    )),
+  )
+  .add('2019-06-23', () =>
+    races20190623.map(race => (
+      <div>
+        <RaceName race={race} />
+      </div>
+    )),
+  );

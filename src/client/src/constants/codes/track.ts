@@ -27,42 +27,55 @@ const trackCode: TrackCode = {
     en: 'Turf',
   },
   12: {
+    ryaku6: '芝・左外',
     course: '芝',
   },
   13: {
+    ryaku6: '芝・左内→外',
     course: '芝',
   },
   14: {
+    ryaku6: '芝・左外→内',
     course: '芝',
   },
   15: {
+    ryaku6: '芝・左内2周',
     course: '芝',
   },
   16: {
+    ryaku6: '芝・左外2周',
     course: '芝',
   },
   17: {
+    ryaku6: '芝・右',
     course: '芝',
   },
   18: {
+    ryaku6: '芝・右外',
     course: '芝',
   },
   19: {
+    ryaku6: '芝・右内→外',
     course: '芝',
   },
   20: {
+    ryaku6: '芝・右外→内',
     course: '芝',
   },
   21: {
+    ryaku6: '芝・右内2周',
     course: '芝',
   },
   22: {
+    ryaku6: '芝・右外2周',
     course: '芝',
   },
   23: {
+    ryaku6: 'ダ・左',
     course: 'ダ',
   },
   24: {
+    ryaku6: 'ダ・右',
     course: 'ダ',
   },
   25: {
@@ -72,12 +85,13 @@ const trackCode: TrackCode = {
     course: 'ダ',
   },
   27: {
-    course: 'ダ',
+    course: 'サ',
   },
   28: {
-    course: 'ダ',
+    course: 'サ',
   },
   29: {
+    ryaku6: 'ダ・直',
     course: 'ダ',
   },
   51: {
