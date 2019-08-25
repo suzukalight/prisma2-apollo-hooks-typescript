@@ -87,7 +87,7 @@ export const RacingFixtures: React.FC<RacingFixturesProps> = ({ yschs }) => {
     if (dateString in yschsByDateMap) yschsByDateMap[dateString].push(ysch);
     else yschsByDateMap[dateString] = [ysch];
   });
-  const keys = Object.keys(yschsByDateMap).sort((a: string, b: string) => +a - +b);
+  const keys = Object.keys(yschsByDateMap).sort((a, b) => +a - +b);
   const yschsByDates = keys.map(key => yschsByDateMap[key]);
 
   return <RacingFixturesPresenter yschsByDates={yschsByDates} />;

@@ -1,7 +1,7 @@
 interface GradeCode {
   [key: string]: {
     full?: string;
-    ryaku?: string;
+    ryaku: string;
   };
 }
 

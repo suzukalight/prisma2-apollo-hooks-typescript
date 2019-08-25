@@ -2,7 +2,10 @@ import { JvRaceOrYschGradeRace } from '../types/jra-van';
 
 import gradeCode from '../constants/codes/grade';
 
-export const comparatorGradeAndJouken = (a: JvRaceOrYschGradeRace, b: JvRaceOrYschGradeRace) => {
+export const comparatorGradeAndJouken = (
+  a: JvRaceOrYschGradeRace,
+  b: JvRaceOrYschGradeRace,
+): number => {
   const gradeA = gradeCode[a.gradeCode].ryaku;
   const gradeB = gradeCode[b.gradeCode].ryaku;
   if (gradeA && !gradeB) return 1;

@@ -1,7 +1,7 @@
 interface JoukenCode {
   [key: string]: {
     full?: string;
-    ryaku?: string;
+    ryaku: string;
     en?: string;
   };
 }

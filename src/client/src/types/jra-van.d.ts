@@ -11,6 +11,9 @@ export interface JvUmaRace {
 export interface JvRace {
   id: number;
   raceDate?: any;
+  courseCode?: string;
+  kai?: number;
+  nichi?: number;
   number: number;
   hondai?: string;
   ryakushou6: string;
